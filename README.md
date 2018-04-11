@@ -8,7 +8,29 @@ First, we call the required modules.
 import numpy as np
 import pandas as pd
 import scipy as sc
+from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 import matplotlib.pyplot as plt
 ```
+
+In the next step, we read our data and split it into training/test set to use it in the algorithms. 
+
+```
+X = pd.read_csv("X.csv")
+y = pd.read_csv("y.csv")
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.05, random_state=40)
+```
+
+First let us use a simple logistic regression. The accuracy of this algorithm is %91. 
+
+```
+from sklearn.linear_model import LogisticRegression
+logreg = LogisticRegression()
+logreg.fit(X_train, y_train)
+y_pred = logreg.predict(X_test)
+print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(logreg.score(X_test, y_test)))
+
+>> Accuracy of logistic regression classifier on test set: 0.91
+```
+
 
