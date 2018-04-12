@@ -66,12 +66,12 @@ ax.set_ylabel('number of hidden layers')
 plt.show(block=True)
 plt.interactive(False)
 ```
-The outcome is the attached file `Figure_1.png`. As one imediately notice, the most efficient values are `alpha = ???` and hidden layers ???. 
+The outcome is the attached file `Figure_1.png`. As one imediately notice, the most efficient values are `alpha = 1` and hidden layers 225. 
 ```
-nn_alg = MLPClassifier(solver='lbfgs', alpha=???, hidden_layer_sizes=(???,), random_state=1)
+nn_alg = MLPClassifier(solver='lbfgs', alpha=1, hidden_layer_sizes=(225,), random_state=1)
 nn_alg.fit(X_train, y_train)
 y_pred = nn_alg.predict(X_test)
 print('Accuracy of the corresponding neural network classifier on test set: {:.2f}'.format(nn_alg.score(X_test, y_test)))
 
->>
+>> Accuracy of the corresponding neural network classifier on test set: 0.95
 ```
