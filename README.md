@@ -35,8 +35,8 @@ print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(lo
 Now let us use neural network to improve the accuracy. To do so, we cross validate the data for different values of hidden layers and regularization.
 ```
 df = pd.DataFrame()
-for i in range(10,20):
-    for j in range(-5,3):
+for i in range(10,250,10):
+    for j in range(-2,10):
         nn_alg = MLPClassifier(solver='lbfgs', alpha=10**((-1)*j), hidden_layer_sizes=(i,), random_state=1)
         nn_alg.fit(X_train, y_train)
         y_pred = nn_alg.predict(X_test)
