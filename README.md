@@ -42,4 +42,36 @@ for i in range(10,20):
         y_pred = nn_alg.predict(X_test)
         df.at[i,j] = nn_alg.score(X_test, y_test)
 ```
-The datafram ```df``` is 
+The datafram ```df``` can be easily studies through a simple plotting. 
+```
+
+X = np.asarray(df.index)
+Y = np.asarray(df.columns)
+Z = df.as_matrix()
+
+print(Y, X)
+fig, ax = plt.subplots()
+
+fig = plt.contourf(Y, X, Z, 20, cmap='RdGy')
+fig = plt.colorbar();
+
+ax.set_xticks(Y)
+ax.set_xticklabels(Y)
+ax.set_yticks(X)
+ax.set_yticklabels(X)
+
+ax.set_xlabel('alpha in the form of j: (10**((-1)*j))')
+ax.set_ylabel('number of hidden layers')
+
+plt.show(block=True)
+plt.interactive(False)
+```
+The outcome is the attached file `Figure_1.png`. As one imediately notice, the most efficient values are `alpha = ???` and hidden layers ???. 
+```
+nn_alg = MLPClassifier(solver='lbfgs', alpha=???, hidden_layer_sizes=(???,), random_state=1)
+nn_alg.fit(X_train, y_train)
+y_pred = nn_alg.predict(X_test)
+print('Accuracy of the corresponding neural network classifier on test set: {:.2f}'.format(nn_alg.score(X_test, y_test)))
+
+>>
+```
